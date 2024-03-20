@@ -9,122 +9,49 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          // decoration: const BoxDecoration(
-          //   gradient: LinearGradient(
-          //     begin: Alignment.bottomCenter,
-          //     end: Alignment.topCenter,
-          //     colors: [
-          //       Color.fromARGB(153, 193, 190, 190),
-          //       Color.fromARGB(153, 130, 128, 128)
-          //     ],
-          //   ),
-          // ),
-          color: Colors.green[50],
-          child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 50,
-                ),
-                // const CustomAppBar(
-                //   text: 'Profile',
-                // ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 250,
-                      height: 70,
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        elevation: 4.0,
-                        color: Colors.blue,
-                        child: const Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Center(
-                            child: Text(
-                              "Profile",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 26.0,
-                              ),
-                            ),
-                          ),
-                        ),
+        body: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: const Color.fromRGBO(247, 246, 251, 1),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const SizedBox(
+                height: 15,
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * .85,
+                width: MediaQuery.of(context).size.width * .75,
+                child: Column(children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .051,
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height * .65,
-                  width: MediaQuery.of(context).size.width * .75,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40),
-                      bottomRight: Radius.circular(40),
-                    ),
-                  ),
-                  child: SizedBox(
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       children: [
                         Container(
+                          height: MediaQuery.of(context).size.height * .25,
+                          width: MediaQuery.of(context).size.width * .25,
                           decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(40),
-                              bottomRight: Radius.circular(40),
-                            ),
+                            color: Colors.green,
+                            shape: BoxShape.circle,
                           ),
-                          height: MediaQuery.of(context).size.height * .1,
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  height: 100,
-                                  width: 100,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.green,
-                                    shape: BoxShape.circle,
-                                  ),
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('demo data',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                        )),
-                                    Text(
-                                      'demo subtitle',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                        ),
+                        Text('Husky',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            )),
+                        const Text(
+                          'Husky@gmail.com',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
                           ),
                         ),
                         const SizedBox(
@@ -154,10 +81,6 @@ class DashBoard extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
-                        // const DashboardContainer(
-                        //   text: 'Terms And Condition',
-                        //   icon: Icons.article,
-                        // ),
                         Container(
                           decoration: const BoxDecoration(
                             color: Colors.white,
@@ -260,8 +183,8 @@ class DashBoard extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-              ])),
-    );
+                ]),
+              )
+            ])));
   }
 }

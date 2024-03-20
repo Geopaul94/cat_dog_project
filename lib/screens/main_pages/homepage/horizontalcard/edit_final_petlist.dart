@@ -12,8 +12,8 @@ import 'package:petapp/screens/main_pages/homepage/cat/bottom_pop_up_cat.dart';
 import 'package:petapp/screens/main_pages/homepage/cat/catpage_edit_delete.dart';
 
 class EditFinalFullLidt extends StatefulWidget {
-    int intex;
-   EditFinalFullLidt({super.key,required this.intex});
+  int intex;
+  EditFinalFullLidt({super.key, required this.intex});
 
   @override
   State<EditFinalFullLidt> createState() => _EditFinalFullLidtState();
@@ -21,7 +21,7 @@ class EditFinalFullLidt extends StatefulWidget {
 
 class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
   @override
- final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
 
   String? _selectedGender;
@@ -80,7 +80,6 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
         appBar: AppBar(
           leading: Padding(
             padding: EdgeInsets.only(left: 16.0),
-            
             child: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
@@ -318,32 +317,37 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
                                               onPressed: () async {
                                                 await editPetDataList(
                                                   PetModel(
-                                                    id: finalPetList[widget.intex!]
+                                                    id: finalPetList[
+                                                            widget.intex!]
                                                         .id,
                                                     //  age: finalPetList[widget.intex!].age,
                                                     name: nameController.text,
                                                     gender: _selectedGender!,
-                                                    paws: finalPetList[widget.intex!]
+                                                    paws: finalPetList[
+                                                            widget.intex!]
                                                         .paws,
                                                     // weight: double.parse(
                                                     //     weightController.text),
                                                     // image: finalPetList[widget.intex!]
                                                     //     .image,
                                                     image: updatedImagePath ??
-                                                        finalPetList[widget.intex!]
+                                                        finalPetList[
+                                                                widget.intex!]
                                                             .image,
-                                                    dob: finalPetList[widget.intex!]
+                                                    dob: finalPetList[
+                                                            widget.intex!]
                                                         .dob,
                                                   ),
                                                 );
 
-                                                Navigator.of(context).pop();
-                                                Navigator.of(context).pop();
-                                                Navigator.pushReplacement(
+                                                Navigator.pushAndRemoveUntil(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          BottomNavigator(indexe: 0))
+                                                          BottomNavigator(
+                                                              indexe: 0)),
+                                                  (route) =>
+                                                      false, // This will remove all existing routes from the stack
                                                 );
 
                                                 const snackBar = SnackBar(

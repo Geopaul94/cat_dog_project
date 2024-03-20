@@ -1,5 +1,7 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:petapp/hive/functions/reminder_function/reminder_functions.dart';
+import 'package:petapp/notifications/notification.dart';
 
 import 'package:petapp/screens/main_pages/reminder_page/add_reminder.dart';
 import 'package:petapp/screens/main_pages/reminder_page/reminder_card_full_page.dart';
@@ -15,15 +17,19 @@ class Reminders extends StatefulWidget {
 
 class _RemindersState extends State<Reminders> {
   @override
-  // void initState() {
-  //   getreminderData();
-  //   addreminderDataList();
-  //   super.initState();
-  // }
   void initState() {
     super.initState();
     _loadData();
     addreminderDataList();
+
+    AwesomeNotifications().setListeners(
+        onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+        onNotificationCreatedMethod:
+            NotificationController.onNotificationCreatedMethod,
+        onNotificationDisplayedMethod:
+            NotificationController.onNotificationDisplayedMethod,
+        onDismissActionReceivedMethod:
+            NotificationController.onDismissActionReceivedMethod);
   }
 
   void _loadData() async {
@@ -347,6 +353,7 @@ class _RemindersState extends State<Reminders> {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    print('notification');
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => AddReminder()));
                   },
@@ -367,7 +374,18 @@ class _RemindersState extends State<Reminders> {
                       ],
                     ),
                   ),
-                )
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      AwesomeNotifications().createNotification(
+                        content: NotificationContent(
+                            id: 1,
+                            channelKey: 'basic_channel',
+                            title: "Vaccine",
+                            body: "Upcoming vaccine date 20 March 2024"),
+                      );
+                    },
+                    child: Text("notification"))
               ],
             ),
           ),
