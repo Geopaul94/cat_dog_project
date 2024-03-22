@@ -27,7 +27,7 @@ class _AnimatedPetIconState extends State<AnimatedPetIcon> {
       },
       child: Scaffold(
         floatingActionButton: SpeedDial(
-            animatedIcon: AnimatedIcons.list_view,
+            animatedIcon: AnimatedIcons.search_ellipsis,
             backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
             foregroundColor: Colors.white,
             openCloseDial: isDialOpen,

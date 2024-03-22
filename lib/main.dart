@@ -17,6 +17,19 @@ Future main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
 
+  // AwesomeNotifications().initialize(null, [
+  //   NotificationChannel(
+  //     channelKey: 'instant_notification',
+  //     channelName: 'basic instant notification',
+  //     channelDescription:
+  //         'notification channel triggers notification instantly',
+  //     channelGroupKey: 'reminders',
+  //     defaultColor: Colors.amber,
+  //     ledColor: Colors.blue,
+  //     importance: NotificationImportance.High,
+  //   )
+  // ]);
+
   if (!Hive.isAdapterRegistered(PetModelAdapter().typeId)) {
     Hive.registerAdapter(PetModelAdapter());
   }
@@ -65,6 +78,9 @@ class MyApp extends StatefulWidget {
 
   @override
   State<MyApp> createState() => _MyAppState();
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+  // This widget is the root of your application.
 }
 
 class _MyAppState extends State<MyApp> {
@@ -73,7 +89,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Barkmeow',
-        theme: ThemeData(primarySwatch: Colors.blue),
+        //  theme: ThemeData(primarySwatch: Colors.blue),
         home: const SplashScreen());
   }
 }

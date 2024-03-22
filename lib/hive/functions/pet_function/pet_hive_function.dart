@@ -4,10 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:petapp/model/petmodel/pet/pet_model.dart';
 
-const String petData = 'PetData'; 
+const String petData = 'PetData';
 ValueNotifier<String> Pets = ValueNotifier("Pet");
 
 List<PetModel> finalPetList = [];
+List<PetModel> petList = [];
 // ignore: non_constant_identifier_names
 List<PetModel> CatList = [];
 // ValueNotifier<List<PetModel>> CatList = ValueNotifier([]);
@@ -93,8 +94,6 @@ Future<void> deletePetDataList(String id,
   // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
   Pets.notifyListeners();
 }
-
-
 
 Future<void> editPetDataList(PetModel petDetails) async {
   final box = await Hive.openBox<PetModel>(petData);

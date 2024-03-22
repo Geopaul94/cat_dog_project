@@ -13,7 +13,7 @@ import 'package:petapp/screens/main_pages/homepage/cat/catpage_edit_delete.dart'
 
 class EditFinalFullLidt extends StatefulWidget {
   int intex;
-  EditFinalFullLidt({super.key, required this.intex});
+  EditFinalFullLidt({super.key, required this.intex, required int index});
 
   @override
   State<EditFinalFullLidt> createState() => _EditFinalFullLidtState();

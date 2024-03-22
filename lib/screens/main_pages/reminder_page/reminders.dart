@@ -1,7 +1,9 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:petapp/hive/functions/reminder_function/reminder_functions.dart';
-import 'package:petapp/notifications/notification.dart';
+import 'package:petapp/model/petmodel/reminder/reminder_model.dart';
+import 'package:petapp/screens/main_pages/reminder_page/notifications/notification.dart';
 
 import 'package:petapp/screens/main_pages/reminder_page/add_reminder.dart';
 import 'package:petapp/screens/main_pages/reminder_page/reminder_card_full_page.dart';
@@ -36,6 +38,41 @@ class _RemindersState extends State<Reminders> {
     await getreminderData();
 
     setState(() {});
+  }
+
+  Future<void> scheduleNotificationsFromHive() async {
+    // Open the Hive box containing ReminderModel objects
+    final box = await Hive.openBox<ReminderModel>('reminderBox');
+
+    // Fetch ReminderModel objects from the box
+    List<ReminderModel> reminders = box.values.toList();
+
+    // Iterate over each ReminderModel object
+    for (ReminderModel reminder in reminders) {
+      // Extract the date and time string from the ReminderModel
+      String notificationDateTimeString = reminder.dateandtime;
+
+      // Convert the date and time string to a DateTime object
+      DateTime notificationDateTime =
+          DateTime.parse(notificationDateTimeString);
+
+      // Schedule the notification using AwesomeNotifications
+
+      await AwesomeNotifications().createNotification(
+        content: NotificationContent(
+          id: reminder.id.hashCode, // Use a unique ID for each notification
+          channelKey: 'basic_channel',
+          title: 'Reminder',
+          body: 'This is your reminder: ${reminder.remindertype}',
+        ),
+        schedule: NotificationInterval(
+          interval: 1,
+          //    timeZone: , // Use the device's time zone
+          // Schedule at the specified date and time
+          repeats: false, // Do not repeat the notification
+        ),
+      );
+    }
   }
 
   @override
@@ -375,17 +412,6 @@ class _RemindersState extends State<Reminders> {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      AwesomeNotifications().createNotification(
-                        content: NotificationContent(
-                            id: 1,
-                            channelKey: 'basic_channel',
-                            title: "Vaccine",
-                            body: "Upcoming vaccine date 20 March 2024"),
-                      );
-                    },
-                    child: Text("notification"))
               ],
             ),
           ),

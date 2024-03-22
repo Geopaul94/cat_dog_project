@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:petapp/hive/functions/reminder_function/reminder_functions.dart';
@@ -259,9 +260,64 @@ Here .......  """,
                     ),
                     child: const Text('Clear'),
                   ),
+                  // ElevatedButton(
+                  //   onPressed: () async {
+                  //     if (_formKey.currentState!.validate()) {
+                  //       String remindertype = _selectedremindertype ?? "";
+                  //       String note = noteController!.text;
+                  //       String dateAndTime = dateTimeController.text;
+
+                  //       await addReminder(
+                  //         reminderDetails: ReminderModel(
+                  //           id: DateTime.now()
+                  //               .microsecondsSinceEpoch
+                  //               .toString(),
+                  //           remindertype: remindertype,
+                  //           note: note,
+                  //           dateandtime: dateAndTime,
+                  //         ),
+                  //       );
+
+                  //       int parsed = int.parse(dateAndTime);
+
+                  //       AwesomeNotifications().createNotification(
+                  //           content: NotificationContent(
+                  //             id: 1,
+                  //             channelKey: 'basic_channel',
+                  //             title: 'notification',
+                  //             body: 'the body',
+                  //           ),
+                  //           schedule: NotificationCalendar(
+                  //             minute: parsed,
+                  //             year: parsed,
+                  //             month: parsed,
+                  //             hour: parsed,
+                  //           ));
+
+                  //       Navigator.pushReplacement(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => ReminderCardFullPage()),
+                  //       );
+                  //     }
+                  //   },
+                  //   style: ElevatedButton.styleFrom(
+                  //     backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
+                  //     foregroundColor:
+                  //         Colors.white, // Use 'black' from Colors class
+                  //   ),
+                  //   child: const Text('Add'),
+                  // ),
+
                   ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
+                        // if (_formKey.currentState!.validate()) {
+                        //                   String remindertype = _selectedremindertype ?? "";
+                        //                   String note = noteController!.text;
+                        //                   String dateAndTime = dateTimeController.text;
+
+                        // Retrieve user inputs
                         String remindertype = _selectedremindertype ?? "";
                         String note = noteController!.text;
                         String dateAndTime = dateTimeController.text;
@@ -277,6 +333,30 @@ Here .......  """,
                           ),
                         );
 
+                        // Parse the selected date and time
+                        DateTime selectedDateTime =
+                            DateFormat.yMd().add_jm().parse(dateAndTime);
+
+                        // Schedule the notification
+                        AwesomeNotifications().createNotification(
+                          content: NotificationContent(
+                            id: 1,
+                            channelKey: 'basic_channel',
+                            title: remindertype,
+                            body: note,
+                          ),
+                          schedule: NotificationCalendar(
+                            year: selectedDateTime.year,
+                            month: selectedDateTime.month,
+                            day: selectedDateTime.day,
+                            hour: selectedDateTime.hour,
+                            minute: selectedDateTime.minute,
+
+                            // Optional: You can set seconds if needed
+                          ),
+                        );
+
+                        // Navigate to the reminder page or do any other action
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -286,8 +366,7 @@ Here .......  """,
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
-                      foregroundColor:
-                          Colors.white, // Use 'black' from Colors class
+                      foregroundColor: Colors.white,
                     ),
                     child: const Text('Add'),
                   ),
