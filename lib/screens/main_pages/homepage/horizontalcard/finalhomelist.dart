@@ -311,74 +311,75 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: SpeedDial(
-          animatedIcon: AnimatedIcons.search_ellipsis,
-          backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
-          foregroundColor: Colors.white,
-          openCloseDial: isDialOpen,
-          overlayOpacity: 0.1,
-          spacing: 25,
-          spaceBetweenChildren: 25,
-          children: [
-            SpeedDialChild(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => CatPage()),
-                );
-              },
-              child: Container(
-                width: 56,
-                height: 56,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage('assets/cat11.png'),
-                    fit: BoxFit.cover, // Adjust as needed
-                  ),
+        animatedIcon: AnimatedIcons.search_ellipsis,
+        backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
+        foregroundColor: Colors.white,
+        openCloseDial: isDialOpen,
+        overlayOpacity: 0.1,
+        spacing: 25,
+        spaceBetweenChildren: 20,
+        children: [
+          SpeedDialChild(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => CatPage()),
+              );
+            },
+            child: Container(
+              width: 56,
+              height: 56,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage('assets/catimages/3.jpg'),
+                  fit: BoxFit.fill, // Adjust as needed
                 ),
               ),
-              label: 'Cat',
             ),
-            SpeedDialChild(
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DogPage()),
-                );
-              },
-              child: Container(
-                width: 56,
-                height: 56,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage('assets/dog smile.png'),
-                    fit: BoxFit.cover, // Adjust as needed
-                  ),
+            label: 'Cat',
+          ),
+          SpeedDialChild(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const DogPage()),
+              );
+            },
+            child: Container(
+              width: 56,
+              height: 56,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage('assets/dog smile.png'),
+                  fit: BoxFit.cover, // Adjust as needed
                 ),
               ),
-              label: 'Dog',
             ),
-            SpeedDialChild(
-              onTap: () {
-                setState(() {
-                  isSearching = true;
-                });
-              },
-              child: Container(
-                width: 56,
-                height: 56,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage('assets/search.jpg'),
-                    fit: BoxFit.cover,
-                  ),
+            label: 'Dog',
+          ),
+          SpeedDialChild(
+            onTap: () {
+              setState(() {
+                isSearching = true;
+              });
+            },
+            child: Container(
+              width: 70,
+              height: 70,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage('assets/search.jpg'),
+                  fit: BoxFit.cover, // Adjust as needed
                 ),
               ),
-              label: 'Search',
             ),
-          ]),
+            label: 'Search',
+          ),
+        ],
+      ),
     );
   }
 }

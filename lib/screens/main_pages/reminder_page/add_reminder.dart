@@ -321,7 +321,7 @@ Here .......  """,
                         String remindertype = _selectedremindertype ?? "";
                         String note = noteController!.text;
                         String dateAndTime = dateTimeController.text;
-
+                        print('pickedtime$dateAndTime');
                         await addReminder(
                           reminderDetails: ReminderModel(
                             id: DateTime.now()

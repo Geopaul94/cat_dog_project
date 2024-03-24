@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:petapp/screens/firebase/user_auth/sign_up_page.dart';
+import 'package:petapp/screens/main_pages/dashboard/editprofile.dart';
 import 'package:petapp/screens/main_pages/dashboard/log_out.dart';
+import 'package:petapp/screens/main_pages/dashboard/userprofile.dart';
 import 'package:petapp/screens/widget_refractoring/dashboard/dashboardcontainer.dart';
 
 class DashBoard extends StatelessWidget {
@@ -57,14 +59,26 @@ class DashBoard extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
-                        const DashboardContainer(
+                        DashboardContainer(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => userProfile()),
+                            );
+                          },
                           text: 'My Profile',
                           icon: Icons.person,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const DashboardContainer(
+                        DashboardContainer(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => editProfile()),
+                            );
+                          },
                           text: 'Edit  Profile',
                           icon: Icons.edit_note,
                         ),
