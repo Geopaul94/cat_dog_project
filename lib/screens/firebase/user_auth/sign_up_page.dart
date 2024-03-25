@@ -60,9 +60,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   'assets/cat dog lady.json',
                 ),
               ),
-              const SizedBox(height: 1),
               Container(
-                margin: const EdgeInsets.only(top: 10),
+                // margin: const EdgeInsets.only(top: 10),
                 width: 300,
                 height:
                     345, // Increased height to accommodate new TextFormField

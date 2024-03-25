@@ -15,6 +15,7 @@ import 'package:petapp/screens/main_pages/homepage/cat/cat_page_list.dart';
 import 'package:petapp/screens/main_pages/homepage/dog/dog_page_list.dart';
 
 import 'package:petapp/screens/main_pages/homepage/horizontalcard/edit_final_petlist.dart';
+import 'package:petapp/screens/main_pages/reminder_page/add_reminder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -270,7 +271,13 @@ class _HomePageState extends State<HomePage> {
                                           height: 5,
                                         ),
                                         ElevatedButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .push(MaterialPageRoute(
+                                              builder: (context) =>
+                                                  AddReminder(),
+                                            ));
+                                          },
                                           child: const Row(
                                             children: [
                                               Icon(Icons.add,

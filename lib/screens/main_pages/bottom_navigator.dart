@@ -22,10 +22,10 @@ class _BottomNavigatorState extends State<BottomNavigator> {
   late PageController _pageController;
 
   final List<Widget> _pages = [
-    Training(),
+    HomePage(),
     const Reminders(),
     const AddPets(),
-    HomePage(),
+    Training(),
     const DashBoard(),
   ];
 

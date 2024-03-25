@@ -6,6 +6,7 @@ import 'package:petapp/model/petmodel/pet/pet_model.dart';
 
 const String petData = 'PetData';
 ValueNotifier<String> Pets = ValueNotifier("Pet");
+List<String> nameofPets = [];
 
 List<PetModel> finalPetList = [];
 List<PetModel> petList = [];
@@ -43,6 +44,19 @@ Future<void> addPetDataList() async {
   finalPetList.clear();
   final data = await getPetData();
   finalPetList.addAll(data);
+
+  // Populate the list of pet names
+  nameofPets.clear();
+  for (var pet in finalPetList) {
+    nameofPets.add(
+        pet.name); // Assuming 'name' is the property that holds the pet's name
+  }
+}
+
+Future<List<String>> getPetNames() async {
+  // Ensure that the list of pet names is populated
+  await addPetDataList();
+  return nameofPets;
 }
 
 Future<List<PetModel>> getCatData() async {

@@ -1,6 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:petapp/hive/functions/pet_function/pet_hive_function.dart';
 import 'package:petapp/hive/functions/reminder_function/reminder_functions.dart';
 import 'package:petapp/model/petmodel/reminder/reminder_model.dart';
 import 'package:petapp/screens/main_pages/bottom_navigator.dart';
@@ -159,6 +160,24 @@ Here .......  """,
                         },
                       ),
                     ),
+                    // Container(
+                    //   height: MediaQuery.of(context).size.height * 0.075,
+                    //   width: MediaQuery.of(context).size.width * 0.85,
+                    //   padding: const EdgeInsets.only(
+                    //       left: 30.0, top: 5.0, right: 5.0, bottom: 5.0),
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: const BorderRadius.only(
+                    //       topLeft: Radius.circular(25),
+                    //       bottomRight: Radius.circular(25),
+                    //       topRight: Radius.circular(25),
+                    //     ),
+                    //     border: Border.all(
+                    //         color: _selectedremindertype == null
+                    //             ? const Color.fromRGBO(117, 67, 191, 1)
+                    //             : Colors.transparent),
+                    //     color: Colors.grey[400],
+                    //   ),
+                    // ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.015,
                     ),
