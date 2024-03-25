@@ -82,8 +82,66 @@ class _AddPetsState extends State<AddPets> {
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.check),
-              onPressed: () {
-                // Handle settings action
+              onPressed: () async {
+                // Validate form fields
+                if (!_formKey.currentState!.validate()) {
+                  // If form is not valid, return without navigating
+                  return;
+                }
+
+                // Ensure that an image is selected
+                if (isImageSelected == Null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Please select an image')),
+                  );
+                  return;
+                }
+
+                // Ensure that a pet is selected
+                if (_selectedPet.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        content: Text('Please select a pet (Cat or Dog)')),
+                  );
+                  return;
+                }
+
+                if (_selectedDate == null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        content: Text('Please select your birth date')),
+                  );
+                  return;
+                }
+
+                String name = nameController.text;
+                String gender = _selectedGender ?? "";
+                String paws = _selectedPet;
+                String dob = _selectedDate.toString();
+                String imagePath = _image!.path;
+                // Add pet data
+                await addPetData(
+                  petDetails: PetModel(
+                    id: DateTime.now().microsecondsSinceEpoch.toString(),
+                    name: name,
+                    gender: gender,
+                    paws: paws,
+                    dob: dob,
+                    image: imagePath,
+                  ),
+                );
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BottomNavigator(
+                            indexe: 0,
+                          )),
+                );
+                // } catch (e) {
+                //   print('Error navigating to home page: $e');
+                //   // Handle error gracefully, e.g., show error message to user
+                // }
               },
             ),
           ],

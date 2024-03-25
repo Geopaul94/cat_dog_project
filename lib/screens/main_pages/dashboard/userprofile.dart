@@ -19,7 +19,7 @@ class userProfile extends StatelessWidget {
                   Hero(
                     tag: kBackBtn,
                     child: Card(
-                      color: Colors.blue,
+                      color: Color.fromRGBO(117, 67, 191, 1),
                       elevation: 10,
                       shape: kBackButtonShape,
                       child: MaterialButton(
@@ -41,7 +41,7 @@ class userProfile extends StatelessWidget {
                     tag: 'title',
                     transitionOnUserGestures: true,
                     child: Card(
-                      color: Colors.blue,
+                      color: Color.fromRGBO(117, 67, 191, 1),
                       elevation: 10,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -162,7 +162,9 @@ class userProfile extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.blue)),
+                    backgroundColor: MaterialStatePropertyAll(
+                  Color.fromRGBO(117, 67, 191, 1),
+                )),
                 child: const Text(
                   'OK',
                   style: TextStyle(color: Colors.white),
@@ -182,5 +184,5 @@ ShapeBorder kBackButtonShape = const RoundedRectangleBorder(
 
 Widget kBackBtn = const Icon(
   Icons.arrow_back_ios,
-  color: Colors.black54,
+  color: Colors.white,
 );

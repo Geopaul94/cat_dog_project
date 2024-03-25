@@ -47,18 +47,57 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // AppBar buildAppBar() {
+  //   if (isSearching) {
+  //     return AppBar(
+  //       title: TextField(
+  //         onChanged: (query) {
+  //           setState(() {
+  //             searchQuery = query;
+  //           });
+  //         },
+  //         decoration: InputDecoration(
+  //           hintText: 'Search...',
+  //           border: InputBorder.none,
+  //         ),
+  //       ),
+  //     );
+  //   } else {
+  //     return AppBar(
+  //       automaticallyImplyLeading: false,
+  //       title: const Center(
+  //         child: Text(
+  //           "PAWS",
+  //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+  //         ),
+  //       ),
+  //       backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
+  //       foregroundColor: Colors.white,
+  //     );
+  //   }
+  // }
+
   AppBar buildAppBar() {
     if (isSearching) {
       return AppBar(
-        title: TextField(
-          onChanged: (query) {
-            setState(() {
-              searchQuery = query;
-            });
-          },
-          decoration: InputDecoration(
-            hintText: 'Search...',
-            border: InputBorder.none,
+        backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
+        title: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: TextField(
+            onChanged: (query) {
+              setState(() {
+                searchQuery = query;
+              });
+            },
+            decoration: InputDecoration(
+              //  hintText: 'Search...',
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(horizontal: 20),
+              prefixIcon: Icon(Icons.search, color: Colors.grey),
+            ),
           ),
         ),
       );

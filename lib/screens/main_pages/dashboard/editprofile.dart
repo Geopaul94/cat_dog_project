@@ -35,7 +35,7 @@ class _editProfileState extends State<editProfile> {
                   Hero(
                     tag: kBackBtn,
                     child: Card(
-                      color: Colors.blue,
+                      color: Color.fromRGBO(117, 67, 191, 1),
                       elevation: 10,
                       shape: kBackButtonShape,
                       child: MaterialButton(
@@ -57,7 +57,7 @@ class _editProfileState extends State<editProfile> {
                     tag: 'title',
                     transitionOnUserGestures: true,
                     child: Card(
-                      color: Colors.blue,
+                      color: Color.fromRGBO(117, 67, 191, 1),
                       elevation: 10,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -89,8 +89,7 @@ class _editProfileState extends State<editProfile> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(
-                    top: size.height * 0.15, left: 30, right: 30),
+                padding: EdgeInsets.only(top: 15, left: 30, right: 30),
                 child: Container(
                   child: Form(
                     child: Column(
@@ -205,8 +204,9 @@ class _editProfileState extends State<editProfile> {
                         ElevatedButton(
                           onPressed: () {},
                           style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.blue)),
+                              backgroundColor: MaterialStateProperty.all(
+                            Color.fromRGBO(117, 67, 191, 1),
+                          )),
                           child: const Text(
                             'Save Changes',
                             style: TextStyle(
@@ -235,5 +235,5 @@ ShapeBorder kBackButtonShape = const RoundedRectangleBorder(
 
 Widget kBackBtn = const Icon(
   Icons.arrow_back_ios,
-  color: Colors.black54,
+  color: Colors.white,
 );

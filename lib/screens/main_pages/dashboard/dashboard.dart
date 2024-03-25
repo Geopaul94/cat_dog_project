@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:petapp/screens/firebase/user_auth/sign_up_page.dart';
+import 'package:petapp/screens/main_pages/dashboard/aboutus.dart';
 import 'package:petapp/screens/main_pages/dashboard/editprofile.dart';
 import 'package:petapp/screens/main_pages/dashboard/log_out.dart';
+import 'package:petapp/screens/main_pages/dashboard/privacypolicy.dart';
+import 'package:petapp/screens/main_pages/dashboard/termsandcondition.dart';
 import 'package:petapp/screens/main_pages/dashboard/userprofile.dart';
-import 'package:petapp/screens/widget_refractoring/dashboard/dashboardcontainer.dart';
 
 class DashBoard extends StatelessWidget {
   const DashBoard({super.key});
@@ -11,194 +12,200 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            color: const Color.fromRGBO(247, 246, 251, 1),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const SizedBox(
-                height: 15,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          foregroundColor: Colors.white,
+          backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
+          elevation: 10,
+          iconTheme: const IconThemeData(color: Colors.white),
+          title: Row(
+            children: const [
+              SizedBox(width: 150),
+              SizedBox(width: 8), // Adjust the spacing as needed
+              Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
               ),
+            ],
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
               Container(
-                height: MediaQuery.of(context).size.height * .85,
-                width: MediaQuery.of(context).size.width * .75,
-                child: Column(children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: MediaQuery.of(context).size.height * 0.3,
+                color: Colors.amber,
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.camera,
+                      size: 50, // Adjust the size of the camera icon
+                      color:
+                          Colors.black, // Adjust the color of the camera icon
+                    ),
+                    SizedBox(
+                        height: 20), // Add some space between the icon and text
+                    Text(
+                      "Husky",
+                      style: TextStyle(
+                        fontSize: 24, // Adjust the font size of the text
+                        fontWeight:
+                            FontWeight.bold, // Add fontWeight if desired
                       ),
                     ),
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * .25,
-                          width: MediaQuery.of(context).size.width * .25,
-                          decoration: const BoxDecoration(
-                            color: Colors.green,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        Text('Husky',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            )),
-                        const Text(
-                          'Husky@gmail.com',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        DashboardContainer(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => userProfile()),
-                            );
-                          },
-                          text: 'My Profile',
-                          icon: Icons.person,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        DashboardContainer(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => editProfile()),
-                            );
-                          },
-                          text: 'Edit  Profile',
-                          icon: Icons.edit_note,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const DashboardContainer(
-                          text: 'Privacy Policy ',
-                          icon: Icons.policy,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(40),
-                              bottomRight: Radius.circular(40),
-                            ),
-                          ),
-                          height: MediaQuery.of(context).size.height * 0.075,
-                          width: MediaQuery.of(context).size.width,
-                          child: GestureDetector(
-                            // onTap: () {
-                            //   showDialog(
-                            //     context: context,
-                            //     builder: (BuildContext context) {
-                            //       return ; // Show the CustomAlertBox
-                            //     },
-                            //   );
-                            // },
-                            child: const Row(
-                              children: [
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Icon(
-                                  Icons.article,
-                                  size: 22,
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  "Terms And Condition",
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Icon(
-                                  size: 22,
-                                  Icons.keyboard_arrow_right,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        DashboardContainer(
-                          text: 'About Us',
-                          icon: Icons.help,
-                          onTap: () {
-                            print('Container tapped');
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignUpPage(),
-                                ));
-                          },
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(40),
-                              bottomRight: Radius.circular(40),
-                            ),
-                          ),
-                          height: MediaQuery.of(context).size.height * 0.075,
-                          width: MediaQuery.of(context).size.width,
-                          child: GestureDetector(
-                            onTap: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return CustomeAlertBox();
-                                },
-                              );
-                            },
-                            child: const Row(
-                              children: [
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Icon(
-                                  Icons.logout,
-                                  size: 32,
-                                  color: Colors.red,
-                                ),
-                                SizedBox(
-                                  width: 35,
-                                ),
-                                Text("Log Out",
-                                    style: TextStyle(
-                                        fontSize: 18, color: Colors.red)),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                    Text(
+                      "husky@gmail.com",
+                      style: TextStyle(
+                        fontSize: 20, // Adjust the font size of the text
+                        // Add any other text styles as needed
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Divider(),
+              Container(
+                  // width: MediaQuery.of(context).size.width * .85,
+                  // height: MediaQuery.of(context).size.height * .75,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      right: BorderSide(
+                        // Specify border for the right side
+                        color: Colors.black, // Choose the color of the border
+                        width: 1.0, // Specify the width of the border
+                      ),
                     ),
                   ),
-                ]),
-              )
-            ])));
+                  child: Column(
+                    children: [
+                      // List tile 1
+
+                      ListTile(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => userProfile()),
+                          );
+                        },
+                        leading: Icon(Icons.person),
+
+                        title: Center(
+                            child:
+                                const Text('My Profile')), // Add your text here
+                        trailing: const Icon(Icons
+                            .keyboard_arrow_right), // Add your arrow icon here
+                      ),
+                      const Divider(),
+                      // List tile 2
+                      ListTile(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => editProfile()),
+                          );
+                        },
+                        leading: Icon(
+                          Icons.edit_note,
+                        ),
+                        // Add your image here
+                        title: Center(
+                            child:
+                                const Text('Edit Page')), // Add your text here
+                        trailing: const Icon(Icons
+                            .keyboard_arrow_right), // Add your arrow icon here
+                      ),
+
+                      const Divider(),
+                      // List tile 3
+                      ListTile(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return privacydialoge(
+                                  mdFileName: 'privacy_policy.md');
+                            },
+                          );
+                        },
+                        leading: Icon(Icons.policy),
+                        title: Center(
+                          child: Text(
+                            'Privacy Policy',
+                            textAlign: TextAlign
+                                .center, // Optionally, you can specify the text alignment
+                          ),
+                        ),
+                        trailing: Icon(Icons.keyboard_arrow_right),
+                      ),
+
+                      Divider(),
+                      ListTile(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return termsandconditons(
+                                  mdFileName: 'privacy_policy.md');
+                            },
+                          );
+                        },
+                        leading: Icon(
+                          Icons.article,
+                        ),
+                        // Add your image here
+                        title: Center(
+                          child: const Text('Terms And Condition'),
+                        ), // Add your text here
+                        trailing: const Icon(Icons.keyboard_arrow_right),
+                      ),
+                      Divider(),
+                      ListTile(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => AboutUs()),
+                          );
+                        },
+                        leading: Icon(
+                          Icons.policy,
+                        ),
+                        // Add your image here
+                        title: Center(
+                            child:
+                                const Text('About Us')), // Add your text here
+                        trailing: const Icon(Icons
+                            .keyboard_arrow_right), // Add your arrow icon here
+                      ),
+                      Divider(),
+                      ListTile(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return CustomeAlertBox();
+                            },
+                          );
+                        },
+                        leading: Icon(
+                          Icons.logout,
+                          size: 32,
+                          color: Colors.red,
+                        ),
+                        // Add your image here
+                        title: Center(
+                            child: const Text('Logout ')), // Add your text here
+                        trailing: const Icon(Icons
+                            .keyboard_arrow_right), // Add your arrow icon here
+                      ),
+                      Divider(),
+                    ],
+                  )),
+            ],
+          ),
+        ));
   }
 }
