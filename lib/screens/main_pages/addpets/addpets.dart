@@ -24,7 +24,7 @@ class _AddPetsState extends State<AddPets> {
   String? _selectedGender;
   String _selectedPet = '';
   DateTime? _selectedDate;
- // final TextEditingController _ageController = TextEditingController();
+  // final TextEditingController _ageController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   bool isSelected = false;
@@ -258,6 +258,7 @@ class _AddPetsState extends State<AddPets> {
                         height: MediaQuery.of(context).size.height * 0.025,
                       ),
                       CalenderDate(
+                        labels: 'Birthday',
                         onDateSelected: (date) {
                           setState(() {
                             _selectedDate = date;

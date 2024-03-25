@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:petapp/screens/main_pages/addpets/addpets.dart';
 import 'package:petapp/screens/main_pages/dashboard/dashboard.dart';
-import 'package:petapp/screens/main_pages/homepage/horizontalcard/finalhomelist.dart';
+import 'package:petapp/screens/main_pages/homepage/horizontalcard/homepage.dart';
 import 'package:petapp/screens/main_pages/training/training.dart';
 
 import 'package:petapp/screens/main_pages/reminder_page/reminders.dart';
-import 'package:petapp/screens/main_pages/homepage/homepage.dart';
 
 // ignore: must_be_immutable
 class BottomNavigator extends StatefulWidget {
@@ -23,10 +22,10 @@ class _BottomNavigatorState extends State<BottomNavigator> {
   late PageController _pageController;
 
   final List<Widget> _pages = [
-    HomePage(),
+    Training(),
     const Reminders(),
     const AddPets(),
-    Training(),
+    HomePage(),
     const DashBoard(),
   ];
 

@@ -7,13 +7,19 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:petapp/hive/functions/pet_function/pet_hive_function.dart';
 import 'package:petapp/model/petmodel/pet/pet_model.dart';
+import 'package:petapp/screens/main_pages/addpets/calender.dart';
 import 'package:petapp/screens/main_pages/bottom_navigator.dart';
 import 'package:petapp/screens/main_pages/homepage/cat/bottom_pop_up_cat.dart';
 import 'package:petapp/screens/main_pages/homepage/cat/catpage_edit_delete.dart';
+import 'package:intl/intl.dart';
 
 class EditFinalFullLidt extends StatefulWidget {
-  int intex;
-  EditFinalFullLidt({super.key, required this.intex, required int index});
+  final int? intex;
+  final int? index;
+
+  final String? dob;
+
+  EditFinalFullLidt({this.intex, this.dob, this.index});
 
   @override
   State<EditFinalFullLidt> createState() => _EditFinalFullLidtState();
@@ -23,7 +29,7 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
   @override
   final _formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
-
+  String? formattedDate;
   String? _selectedGender;
   bool isSelected = false;
   String dropdownvalue = '';
@@ -33,13 +39,10 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
   @override
   void dispose() {
     nameController.dispose();
-    weightController.dispose();
-    ageController.dispose();
+
     super.dispose();
   }
 
-  TextEditingController ageController = TextEditingController();
-  TextEditingController weightController = TextEditingController();
   XFile? _image;
 
   String? image;
@@ -69,9 +72,15 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
     // TODO: implement initState
     super.initState();
     nameController.text = finalPetList[widget.intex!].name;
-    // ageController.text = finalPetList[widget.intex!].age.toString();
-    // weightController.text = finalPetList[widget.intex!].weight.toString();
+    // _selectedDate = widget.dob;
     _selectedGender = finalPetList[widget.intex!].gender;
+    _selectedDate = finalPetList[widget.intex!].dob;
+    DateTime dateTime = DateTime.parse(_selectedDate!);
+    formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
+
+    print('hell');
+    print(_selectedGender);
+    print(_selectedDate);
   }
 
   @override
@@ -103,7 +112,7 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
           children: [
             const SizedBox(height: 50),
             Container(
-              height: MediaQuery.of(context).size.height * 0.9,
+              height: MediaQuery.of(context).size.height * 0.85,
               width: MediaQuery.of(context).size.width * 0.92,
               padding: const EdgeInsets.all(20),
               margin: const EdgeInsets.all(15),
@@ -158,25 +167,10 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          // Text(
-                          //   finalPetList[widget.intex!].name,
-                          //   style: const TextStyle(
-                          //     fontSize: 18,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
-                          // Text(
-                          //   finalPetList[widget.intex!].age.toString(),
-                          //   style: const TextStyle(
-                          //     fontSize: 18,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
-
                           TextFormField(
                             controller: nameController,
                             decoration: InputDecoration(
-                              labelText: 'Name',
+                              labelText: 'Pet name',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                                 borderSide:
@@ -185,61 +179,24 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter your name';
+                                return '''Please enter your pet's name''';
                               }
                               return null;
                             },
                           ),
-                          const SizedBox(height: 10.0),
+                          const SizedBox(height: 30.0),
 
-                          // Weight TextFormField
-                          const SizedBox(height: 10.0),
+                          CalenderDate(
+                            labels: 'Birth date:$formattedDate',
+                            onDateSelected: (date) {
+                              setState(() {
+                                _selectedDate = date.toString();
+                                print(_selectedDate);
+                              });
+                            },
+                          ),
 
-                          // Text(
-                          //   finalPetList[widget.intex!].weight.toString(),
-                          //   style: const TextStyle(
-                          //     fontSize: 18,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
-                          // Text(
-                          //   finalPetList[widget.intex!].gender,
-                          //   style: const TextStyle(
-                          //     fontSize: 18,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
-                          const SizedBox(height: 10.0),
-                          // TextFormField(
-                          //   controller: ageController,
-                          //   keyboardType:
-                          //       TextInputType.number, // Allow only numbers
-                          //   decoration: InputDecoration(
-                          //     labelText:
-                          //         '', // Remove label text as the text is in the controller
-                          //     border: OutlineInputBorder(
-                          //       borderRadius: BorderRadius.circular(10.0),
-                          //       borderSide: const BorderSide(color: Colors.grey),
-                          //     ),
-                          //   ),
-                          //   validator: (value) {
-                          //     if (value == null || value.isEmpty) {
-                          //       return 'Please enter your age';
-                          //     } else {
-                          //       try {
-                          //         int age = int.parse(value);
-                          //         if (age <= 0) {
-                          //           return 'Age cannot be zero or negative';
-                          //         }
-                          //       } catch (e) {
-                          //         return 'Invalid age format';
-                          //       }
-                          //       return null;
-                          //     }
-                          //   },
-                          // ),
-
-                          const SizedBox(height: 10.0),
+                          const SizedBox(height: 30.0),
 
                           // Dropdown for Gender
                           DropdownButtonFormField<String>(
@@ -274,6 +231,8 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
                               return null;
                             },
                           ),
+
+                          const SizedBox(height: 30.0),
                           const SizedBox(height: 10.0),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -282,8 +241,7 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
                                 onPressed: () {
                                   // Clear text fields
                                   nameController.clear();
-                                  weightController.clear();
-                                  ageController.clear();
+
                                   setState(() {
                                     _selectedGender = null;
                                   });
@@ -323,6 +281,7 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
                                                     //  age: finalPetList[widget.intex!].age,
                                                     name: nameController.text,
                                                     gender: _selectedGender!,
+                                                    dob: _selectedDate!,
                                                     paws: finalPetList[
                                                             widget.intex!]
                                                         .paws,
@@ -334,9 +293,6 @@ class _EditFinalFullLidtState extends State<EditFinalFullLidt> {
                                                         finalPetList[
                                                                 widget.intex!]
                                                             .image,
-                                                    dob: finalPetList[
-                                                            widget.intex!]
-                                                        .dob,
                                                   ),
                                                 );
 

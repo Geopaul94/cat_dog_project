@@ -3,9 +3,11 @@ import 'package:intl/intl.dart';
 
 class CalenderDate extends StatefulWidget {
   final void Function(DateTime?) onDateSelected;
+  final String labels;
 
   const CalenderDate({
     super.key,
+    required this.labels,
     required this.onDateSelected,
   });
 
@@ -71,9 +73,9 @@ class _CalenderDateState extends State<CalenderDate> {
                   ),
                 ],
               )
-            : const Text(
-                'BIRTH DAY ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            : Text(
+                widget.labels,
+                style: TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
               ),
       ),
     );
