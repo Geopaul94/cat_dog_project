@@ -171,7 +171,7 @@ class _RemindersState extends State<Reminders> {
                   height: MediaQuery.of(context).size.height * 0.005,
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.42,
+                  height: MediaQuery.of(context).size.height * 0.52,
                   width: MediaQuery.of(context).size.width * 0.95,
                   child: Card(
                     color: const Color.fromRGBO(255, 255, 255, 1),
@@ -388,30 +388,30 @@ class _RemindersState extends State<Reminders> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.015,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    print('notification');
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => AddReminder()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor:
-                        const Color.fromRGBO(117, 67, 191, 1), // Text color
-                  ),
-                  child: const SizedBox(
-                    width: 122,
-                    height: 50,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.add, color: Colors.white),
-                        SizedBox(width: 8),
-                        Text('Add Reminder'),
-                      ],
-                    ),
-                  ),
-                ),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     print('notification');
+                //     Navigator.pushReplacement(context,
+                //         MaterialPageRoute(builder: (context) => AddReminder()));
+                //   },
+                //   style: ElevatedButton.styleFrom(
+                //     foregroundColor: Colors.white,
+                //     backgroundColor:
+                //         const Color.fromRGBO(117, 67, 191, 1), // Text color
+                //   ),
+                //   child: const SizedBox(
+                //     width: 122,
+                //     height: 50,
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         Icon(Icons.add, color: Colors.white),
+                //         SizedBox(width: 8),
+                //         Text('Add Reminder'),
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

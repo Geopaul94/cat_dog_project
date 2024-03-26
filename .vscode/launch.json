@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Flutter (lib/screens/main_pages/reminder_page/add_reminder.dart)",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/screens/main_pages/reminder_page/add_reminder.dart"
+        }
+    ]
+}

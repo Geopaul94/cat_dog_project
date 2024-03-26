@@ -9,7 +9,8 @@ import 'package:petapp/screens/main_pages/reminder_page/reminder_card_full_page.
 import 'package:petapp/screens/widget_refractoring/customappbar .dart';
 
 class AddReminder extends StatefulWidget {
-  const AddReminder({super.key});
+  String id;
+  AddReminder({super.key, required this.id});
 
   @override
   State<AddReminder> createState() => _AddReminderState();
@@ -343,9 +344,7 @@ Here .......  """,
                         print('pickedtime$dateAndTime');
                         await addReminder(
                           reminderDetails: ReminderModel(
-                            id: DateTime.now()
-                                .microsecondsSinceEpoch
-                                .toString(),
+                            id: widget.id,
                             remindertype: remindertype,
                             note: note,
                             dateandtime: dateAndTime,

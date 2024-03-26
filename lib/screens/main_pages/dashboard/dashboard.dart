@@ -38,15 +38,15 @@ class DashBoard extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.height * 0.3,
-                color: Colors.amber,
+                //
+                //ad color: Colors.amber,
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.camera,
-                      size: 50, // Adjust the size of the camera icon
-                      color:
-                          Colors.black, // Adjust the color of the camera icon
+                    CircleAvatar(
+                      backgroundImage: const NetworkImage(
+                          'https://th.bing.com/th/id/OIP.0LvP1YUJ2stgbrp2srwnFQHaHa?pid=ImgDet&w=203&h=203&c=7&dpr=1.3'),
+                      radius: 70, // Adjust the color of the camera icon
                     ),
                     SizedBox(
                         height: 20), // Add some space between the icon and text

@@ -430,7 +430,7 @@ class _AddPetsState extends State<AddPets> {
                               ),
                             );
 
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => BottomNavigator(
