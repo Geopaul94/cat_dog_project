@@ -358,7 +358,7 @@ Here .......  """,
                         // Schedule the notification
                         AwesomeNotifications().createNotification(
                           content: NotificationContent(
-                            id: 1,
+                            id: 2,
                             channelKey: 'basic_channel',
                             title: remindertype,
                             body: note,
