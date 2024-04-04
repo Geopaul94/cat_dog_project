@@ -25,7 +25,7 @@ Future main() async {
   }
   await getCatData();
   await getDogData();
-  await addPetDataList();
+  await addPetDataList(); 
   await getreminderData();
   await addreminderDataList();
 
