@@ -14,7 +14,9 @@ import 'package:petapp/screens/main_pages/homepage/cat/cat_page_list.dart';
 
 import 'package:petapp/screens/main_pages/homepage/dog/dog_page_list.dart';
 
+
 import 'package:petapp/screens/main_pages/homepage/horizontalcard/edit_final_petlist.dart';
+import 'package:petapp/screens/main_pages/homepage/horizontalcard/geminiai.dart';
 import 'package:petapp/screens/main_pages/reminder_page/add_reminder.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,44 +49,15 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // AppBar buildAppBar() {
-  //   if (isSearching) {
-  //     return AppBar(
-  //       title: TextField(
-  //         onChanged: (query) {
-  //           setState(() {
-  //             searchQuery = query;
-  //           });
-  //         },
-  //         decoration: InputDecoration(
-  //           hintText: 'Search...',
-  //           border: InputBorder.none,
-  //         ),
-  //       ),
-  //     );
-  //   } else {
-  //     return AppBar(
-  //       automaticallyImplyLeading: false,
-  //       title: const Center(
-  //         child: Text(
-  //           "PAWS",
-  //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-  //         ),
-  //       ),
-  //       backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
-  //       foregroundColor: Colors.white,
-  //     );
-  //   }
-  // }
-
   AppBar buildAppBar() {
     if (isSearching) {
       return AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color.fromRGBO(117, 67, 191, 1),
         title: Container(
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(10),
           ),
           child: TextField(
             onChanged: (query) {
@@ -93,10 +66,9 @@ class _HomePageState extends State<HomePage> {
               });
             },
             decoration: InputDecoration(
-              //  hintText: 'Search...',
+              hintText: 'Search...',
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 20),
-              prefixIcon: Icon(Icons.search, color: Colors.grey),
+              contentPadding: EdgeInsets.symmetric(horizontal: 16),
             ),
           ),
         ),
@@ -104,7 +76,7 @@ class _HomePageState extends State<HomePage> {
     } else {
       return AppBar(
         automaticallyImplyLeading: false,
-        title: const Center(
+        title: Center(
           child: Text(
             "PAWS",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
@@ -313,18 +285,24 @@ class _HomePageState extends State<HomePage> {
                                           onPressed: () {
                                             Navigator.of(context)
                                                 .push(MaterialPageRoute(
-                                              builder: (context) =>
-                                                  AddReminder(),
+                                              builder: (context) => AddReminder(
+                                                id: finalPetList[index].id,
+                                              ),
                                             ));
                                           },
                                           child: const Row(
                                             children: [
                                               Icon(Icons.add,
                                                   color: Colors.white),
-                                              SizedBox(width: 3),
-                                              Text("Add Record",
-                                                  style: TextStyle(
-                                                      color: Colors.white)),
+                                              SizedBox(width: 1),
+                                              Text(
+                                                "Add Reminder",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize:
+                                                      13, // Adjust the font size as needed
+                                                ),
+                                              ),
                                             ],
                                           ),
                                           style: ElevatedButton.styleFrom(
@@ -423,6 +401,27 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             label: 'Search',
+          ),
+          SpeedDialChild(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ChatScreen(),
+              ));
+              print("Avatar tapped!");
+            },
+            child: Container(
+              width: 56,
+              height: 56,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: NetworkImage(
+                      'https://images.pexels.com/photos/5733423/pexels-photo-5733423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'),
+                  fit: BoxFit.fill, // Adjust as needed
+                ),
+              ),
+            ),
+            label: 'Ask Ai ',
           ),
         ],
       ),

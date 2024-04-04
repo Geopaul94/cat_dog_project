@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:petapp/firebase/firebase.dart';
 import 'package:petapp/screens/firebase/user_auth/login_page.dart';
+import 'package:petapp/screens/main_pages/bottom_navigator.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -142,8 +143,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter a password';
-                          } else if (value.length < 8) {
-                            return 'Password must be at least 8 characters long';
+                          } else if (value.length < 6) {
+                            return 'Password must be at least 6 characters long';
                           }
                           return null;
                         },
@@ -198,7 +199,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const LoginPage()),
+                                builder: (context) =>  BottomNavigator(indexe: 2,)),
                           );
                         },
                     ),
@@ -216,17 +217,17 @@ class _SignUpPageState extends State<SignUpPage> {
     String username = _usernameController.text;
 
     try {
-      // Create user with email and password
+      
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
 
-      // Save email and username to Firestore using FirebaseServices
+      
       FirebaseServices()
-          .addUser(userCredential.user!.uid, username, email, 'user-image-url');
+          .addUser(email: email,user: username,phone: "",userImage: '', address: '');
 
-      // Navigate to login page after successful signup
+     
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const LoginPage()),
+        MaterialPageRoute(builder: (context) => BottomNavigator(indexe: 3,)),
       );
     } on FirebaseAuthException catch (e) {
       print(e);

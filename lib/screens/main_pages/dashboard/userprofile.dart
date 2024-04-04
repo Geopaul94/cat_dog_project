@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:petapp/screens/main_pages/dashboard/dashboard.dart';
 import 'package:petapp/screens/main_pages/dashboard/editprofile.dart';
 
 class userProfile extends StatelessWidget {
-  const userProfile({super.key});
+  String uid;
+  userProfile({required this.uid, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,6 @@ class userProfile extends StatelessWidget {
         body: SingleChildScrollView(
           child: SafeArea(
             child: Column(children: <Widget>[
-              // SizedBox(height: 30,),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -19,7 +20,7 @@ class userProfile extends StatelessWidget {
                   Hero(
                     tag: kBackBtn,
                     child: Card(
-                      color: Color.fromRGBO(117, 67, 191, 1),
+                      color: const Color.fromRGBO(117, 67, 191, 1),
                       elevation: 10,
                       shape: kBackButtonShape,
                       child: MaterialButton(
@@ -41,7 +42,7 @@ class userProfile extends StatelessWidget {
                     tag: 'title',
                     transitionOnUserGestures: true,
                     child: Card(
-                      color: Color.fromRGBO(117, 67, 191, 1),
+                      color: const Color.fromRGBO(117, 67, 191, 1),
                       elevation: 10,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
@@ -85,11 +86,14 @@ class userProfile extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     child: Column(
                       children: <Widget>[
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png"),
-                          radius: 80,
-                        ),
+                        userimage == ""
+                            ? const CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_1280.png"),
+                                radius: 80,
+                              )
+                            : CircleAvatar(
+                                backgroundImage: NetworkImage(userimage, ),radius: 80,),
                         const SizedBox(
                           height: 50,
                         ),
@@ -99,27 +103,27 @@ class userProfile extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  const Text(
-                                    'Name:   ',
-                                    style: TextStyle(
+                                  Text(
+                                    'Name: $username',
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
                                     ),
                                   ),
-                                  Text(""),
+                                  // const Text(""),
                                 ],
                               ),
                               const SizedBox(height: 20),
                               Row(
                                 children: [
-                                  const Text(
-                                    'Adress: ',
+                                  Text(
+                                    'Adress:$useraddress',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
                                     ),
                                   ),
-                                  Text(""),
+                                  // Text(""),
                                 ],
                               ),
                               const SizedBox(
@@ -127,14 +131,14 @@ class userProfile extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  const Text(
-                                    'Phone:  ',
+                                  Text(
+                                    'Phone:$userphone',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16,
                                     ),
                                   ),
-                                  Text(""),
+                                  // Text(""),
                                 ],
                               ),
                             ],
@@ -147,7 +151,9 @@ class userProfile extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => editProfile()),
+                                      builder: (context) => editProfile(
+                                            uid: uid,
+                                          )),
                                 );
                               },
                               icon: const Icon(Icons.edit_document)),

@@ -5,13 +5,15 @@ class FirebaseServices {
       FirebaseFirestore.instance.collection('userdata');
 
   // Add user data
-  Future<void> addUser(
-      String user, String email, String phone, String userImage) {
+  Future<void> addUser( {
+      required String user,required String email, required String address, required String phone, required String userImage}) {
     return userData.add({
       'user': user,
       'email': email,
       'phone': phone,
       'userimage': userImage,
+      'address':address,
+      
     });
   }
 

@@ -9,7 +9,7 @@ import 'package:petapp/screens/main_pages/reminder_page/reminder_card_full_page.
 import 'package:petapp/screens/widget_refractoring/customappbar .dart';
 
 class AddReminder extends StatefulWidget {
-  const AddReminder({super.key});
+  const AddReminder({super.key, required String id});
 
   @override
   State<AddReminder> createState() => _AddReminderState();
