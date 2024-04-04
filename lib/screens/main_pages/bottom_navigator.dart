@@ -26,7 +26,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
     const Reminders(),
     const AddPets(),
     Training(),
-    const DashBoard(),
+     DashBoard(),
   ];
 
   @override

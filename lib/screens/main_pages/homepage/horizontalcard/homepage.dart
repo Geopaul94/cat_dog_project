@@ -15,7 +15,9 @@ import 'package:petapp/screens/main_pages/homepage/cat/cat_page_list.dart';
 import 'package:petapp/screens/main_pages/homepage/dog/dog_page_list.dart';
 import 'package:petapp/screens/main_pages/homepage/geminiai.dart';
 
+
 import 'package:petapp/screens/main_pages/homepage/horizontalcard/edit_final_petlist.dart';
+import 'package:petapp/screens/main_pages/homepage/horizontalcard/geminiai.dart';
 import 'package:petapp/screens/main_pages/reminder_page/add_reminder.dart';
 
 class HomePage extends StatefulWidget {
