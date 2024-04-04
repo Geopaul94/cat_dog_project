@@ -13,6 +13,7 @@ import 'package:petapp/hive/functions/pet_function/pet_hive_function.dart';
 import 'package:petapp/screens/main_pages/homepage/cat/cat_page_list.dart';
 
 import 'package:petapp/screens/main_pages/homepage/dog/dog_page_list.dart';
+import 'package:petapp/screens/main_pages/homepage/geminiai.dart';
 
 
 import 'package:petapp/screens/main_pages/homepage/horizontalcard/edit_final_petlist.dart';
