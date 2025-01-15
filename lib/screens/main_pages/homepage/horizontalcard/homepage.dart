@@ -17,7 +17,7 @@ import 'package:petapp/screens/main_pages/homepage/geminiai.dart';
 
 
 import 'package:petapp/screens/main_pages/homepage/horizontalcard/edit_final_petlist.dart';
-import 'package:petapp/screens/main_pages/homepage/horizontalcard/geminiai.dart';
+
 import 'package:petapp/screens/main_pages/reminder_page/add_reminder.dart';
 
 class HomePage extends StatefulWidget {
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                 searchQuery = query;
               });
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Search...',
               border: InputBorder.none,
               contentPadding: EdgeInsets.symmetric(horizontal: 16),
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
     } else {
       return AppBar(
         automaticallyImplyLeading: false,
-        title: Center(
+        title: const Center(
           child: Text(
             "PAWS",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
@@ -406,7 +406,7 @@ class _HomePageState extends State<HomePage> {
           SpeedDialChild(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => ChatScreen(),
+                builder: (context) => const ChatScreen()
               ));
               print("Avatar tapped!");
             },
